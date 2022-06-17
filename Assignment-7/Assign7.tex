@@ -1,0 +1,187 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+
+\setbeamertemplate{caption}[numbered]{}
+
+\usepackage{enumitem}
+\usepackage{tfrupee}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{txfonts}
+
+\def\inputGnumericTable{}
+\newcommand*{\permcomb}[4][0mu]{{{}^{#3}\mkern#1#2_{#4}}}
+\newcommand*{\perm}[1][-3mu]{\permcomb[#1]{P}}
+\newcommand*{\comb}[1][-1mu]{\permcomb[#1]{C}}
+\usepackage[latin1]{inputenc}                                 
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                        
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}
+\usepackage{caption} 
+\captionsetup[table]{skip=3pt}  
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\renewcommand{\thefigure}{\arabic{table}}
+\renewcommand{\thetable}{\arabic{table}}                                     
+                               
+\title{AI1110 \\ Assignment 7}
+\author{Pranav B \\ AI21BTECH11023}
+\date{26 May 2022}
+
+
+\begin{document}
+	% The title page
+	\begin{frame}
+		\titlepage
+	\end{frame}
+	
+	% The table of contents
+	\begin{frame}{Outline}
+    		\tableofcontents
+	\end{frame}
+	
+	% The question
+	\section{Question}
+	\begin{frame}{ Papoulis Chapter 5 problem 5.38}
+a)Let $x\sim G(\alpha,\beta)$, Show that $E(x)=\alpha\beta$,Var($x$)=$\alpha\beta^2$ and $\phi_{X}(w)=(1-\beta jw)^{-\alpha}$.\\
+b)Let $x \sim \chi ^2(n)$, Show that $E(x)=n$,Var($x$)=$2n$ and $\phi_{X}(w)=(1-2 e^{jw})^{\frac{n}{2}}$.\\
+c)Let $x \sim B(n,p)$, Show that $E(x)=np$,Var($x$)=$npq$ and $\phi_{X}(w)=( pe^{jw}+q)^{n}$.\\
+d)Let $x \sim N B(r,p)$, Show that $\phi_{X}(w)=p'(1-qe^{jw})^{-r}$.\\
+	\end{frame}
+	% The solution
+	\section{Solution}
+	\begin{frame}{Solution}
+   a) \begin{align}
+       f_{X}(x)= \frac{x^{\alpha-1}e^{\frac{-x}{\beta}}}{\Gamma(\alpha) \beta^{\alpha}}  \forall x \in [0,\infty)
+    \end{align}
+    else $f_{X}(x)=0$
+    Mean($\mu$)=$\int_{-\infty}^{\infty}xf_{X}(x)dx$\\
+    \begin{align}
+    \implies \mu =\int_{-\infty}^{\infty} \frac{x^{\alpha}e^{\frac{-x}{\beta}}}{\Gamma(\alpha) \beta^{\alpha}} dx\\
+ \Gamma(\alpha)=\int_{0}^{\infty} x^{\alpha-1}e^{-x} dx\\
+ \text{Let} \frac{x}{\beta}=t\\
+ \implies \frac{dx}{\beta}=dt
+ \end{align}
+ \end{frame}
+ \begin{frame}
+ \begin{align}
+ x^{\alpha}&=\beta^{\alpha}t^{\alpha}\\
+ \therefore \mu &= \beta \int_{0}^{\infty} \frac{t^{\alpha}e^{-t}}{\Gamma(\alpha)} dt\\
+ \end{align}
+ Simplification of numerator using integration by parts-\\
+ \begin{align}
+ 	\label{eq:eq4}
+ \int_{0}^{\infty} t^{\alpha}e^{-t} dt &= \alpha \int_{0}^{\infty} t^{\alpha-1} e^{-t}dt\\
+& =\alpha \Gamma(\alpha)\\
+ \therefore \mu &=\alpha \beta \frac{\Gamma(\alpha)}{\Gamma(\alpha)}\\
+ \implies \mu&=\alpha\beta
+    \end{align}
+\end{frame}
+\begin{frame}
+ \begin{align}
+ E(x^2)=\int_{0}^{\infty}\frac{x^{\alpha+1}e^{\frac{-x}{\beta}}}{\Gamma(\alpha) \beta^{\alpha}} dx
+ \text{Let} \frac{x}{\beta}=t\\
+ \implies \frac{dx}{\beta}=dt\\
+ x^{\alpha+1}=\beta^{\alpha+1}t^{\alpha+1}\\
+ \text{Substituting the above we get-}\\
+ E(x^2)=\frac{\beta^{2}}{\Gamma(\alpha)}\int_{0}^{\infty}t^{\alpha+1}e^{-t} dt
+ \end{align}
+ \end{frame}
+ \begin{frame}
+ \begin{align}
+ \text{Using integration by parts}=\\
+ (\alpha+1)\int_{0}^{\infty}t^{\alpha}e^{-t}dt\\
+ \text{From \eqref{eq:eq4}}-\\
+ E(x^2)=\frac{\beta^{2}}{\Gamma(\alpha)}(\alpha+1) \alpha \Gamma(\alpha)\\
+ \implies E(x^2)=(\alpha+1) \alpha  \beta^{2}\\
+ Var(x)= E(x^2)-(E(x))^2=\alpha^{2} \beta^{2}+\alpha\beta^{2}-\alpha^{2} \beta^{2}\\
+ \therefore Var(x)=\alpha\beta^{2}
+ \end{align}
+ \end{frame}
+ \begin{frame}
+ \begin{align}
+ \phi_{X}(w)=\int_{0}^{\infty} \frac{x^{\alpha-1}e^{\frac{-x}{\beta}}}{\Gamma(\alpha) \beta^{\alpha}} e^{iwx} dx \\
+ \implies \phi_{X}(w)=\frac{1}{\Gamma(\alpha) \beta^{\alpha}} \int_{0}^{\infty}x^{\alpha-1} e^{\frac{-x(1-i\beta t)}{\beta}} dt\\
+ \text{Let}\frac{\beta}{1-i \beta t}=\beta ^{*}\\
+ \text{also} \\
+ \int_{0}^{\infty} e^{\frac{-x}{\beta^{*}}} x^{\alpha-1} dx =\Gamma(\alpha)({\beta^{*}})^{\alpha}\\
+ \because \int_{0}^{\infty}f_{X}(x)dx=1 \\
+ \end{align}
+ \end{frame}
+ \begin{frame}
+ \begin{align}
+ \therefore \phi_{X}(w)=\frac{1}{\Gamma(\alpha) \beta^{\alpha}} \Gamma(\alpha)({\beta^{*}})^{\alpha}\\
+ \implies \phi_{X}(w)=(\frac{\beta^{*}}{\beta})^{\alpha}\\
+ \therefore \phi_{X}(w)=(1-i\beta t)^{-\alpha}
+ \end{align}
+ \end{frame}
+\begin{frame}
+    b)
+    \begin{align}
+        X \sim \chi ^2(n) \implies \alpha =\frac{n}{2}, \beta = 2
+    \end{align}
+    in Gamma($\alpha,\beta$). This gives
+    \begin{align}
+        \phi_X(\omega) = (1-j2\omega)^{-n/2}\\
+        E(X) = n\\
+        Var(X) = 2n
+    \end{align}
+\end{frame}
+	\begin{frame}
+	c)$P_{X}(x)=\comb{n}{x} p^x q^{n-x}$, $p+q=1$ for  $x\in[0,n]$
+	else $P_{X}(x)$=0\\
+	\begin{align}
+	E(x)=\sum_{-\infty}^{+\infty} xP_{X}(x)\\
+	\implies E(x)=\sum_{x=0}^{n} x\comb{n}{x} p^x q^{n-x}\\
+	\label{eq:eq3}
+	x\comb{n}{x}=n\comb{n-1}{x-1}\\
+	=\sum_{x=0}^{n} n \comb{n-1}{x-1} p.p^{x-1} q^{(n-1)-(x-1)}\\
+	=np(p+q)^{n-1}\\
+	=np\\
+	\because p+q=1
+	\end{align}
+	\end{frame}
+	\begin{frame}
+	\begin{align}
+	E(x(x-1))=\sum_{x=0}^{n} x(x-1)\comb{n}{x} p^x q^{n-x}
+	\end{align}
+	using $\eqref{eq:eq3}$ we can simplify to get
+	\begin{align}
+	E(x(x-1))=n(n-1)p^2\\
+	E(x^{2}-x)=E(x^2)-E(x)\\
+	\implies E(x^2)=n^{2}p^{2}+npq\\
+	\sigma ^2=E(x^2)-(E(x))^2
+	\implies \sigma ^2=npq
+	\end{align}
+	that is $Var(x)=npq$
+	\end{frame}
+	\begin{frame}
+	\begin{align}
+	\phi_{X}(w)=\int_{-\infty}^{\infty} \comb{n}{x} p^{x} q^{n-x} e^{iwx} dx\\
+	\implies \phi_{X}(w)=\int_{-\infty}^{\infty} \comb{n}{x} {e^{iw}p}^{x} q^{n-x} dx\\
+	\implies \phi_{X}(w)=\sum_{x=0}^{n} \comb{n}{x} (e^{iw}p)^{x} q^{n-x}
+		\end{align}
+		$\because x$ is discrete and $x \in [0,n]$
+		\begin{align}
+	\implies \phi_{X}(w)=(pe^{iw}+q)^n
+	\end{align}
+	\end{frame}
+	\begin{frame}
+	d)$NB(r,p)=\comb{r+x-1}{x}p^{r}q^{x}$  where x=0,1,2.....$\infty$
+	\begin{align}
+	\phi_{X}(w)=\int_{-\infty}^{\infty} \comb{r+x-1}{x} p^{r} q^{x} e^{iwx} dx\\
+	\implies \phi_{X}(w)=\sum_{x=0}^{\infty}\comb{r+x-1}{x} p^{r} q^{x} e^{iwx}\\
+	\implies \phi_{X}(w)=\sum_{x=0}^{\infty}\comb{r+x-1}{x}p^{r} ({qe^{iw}})^{x} dx
+	\end{align}
+	\begin{align}
+	\therefore \phi_{X}(w)=p'(1-qe^{jw})^{-r}
+	\end{align}
+$\because $ x is discrete
+	\end{frame}
+\end{document}
