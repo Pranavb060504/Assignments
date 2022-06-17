@@ -1,0 +1,70 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+
+\setbeamertemplate{caption}[numbered]{}
+
+\usepackage{enumitem}
+\usepackage{tfrupee}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{txfonts}
+
+\def\inputGnumericTable{}
+\newcommand*{\permcomb}[4][0mu]{{{}^{#3}\mkern#1#2_{#4}}}
+\newcommand*{\perm}[1][-3mu]{\permcomb[#1]{P}}
+\newcommand*{\comb}[1][-1mu]{\permcomb[#1]{C}}
+\usepackage[latin1]{inputenc}                                 
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                        
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}
+\usepackage{caption} 
+\captionsetup[table]{skip=3pt}  
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\renewcommand{\thefigure}{\arabic{table}}
+\renewcommand{\thetable}{\arabic{table}}                                     
+                               
+\title{AI1110 \\ Assignment 10}
+\author{Pranav B \\ AI21BTECH11023}
+\date{ 12 June 2022}
+
+
+\begin{document}
+	% The title page
+	\begin{frame}
+		\titlepage
+	\end{frame}
+	
+	% The table of contents
+	\begin{frame}{Outline}
+    		\tableofcontents
+	\end{frame}
+	
+	% The question
+	\section{Question}
+	\begin{frame}{ Papoulis Chapter 9 problem 9.35}
+Show that if $y(t)=x(t+a)-x(t-a)$ then,\\
+$R_{y}(\tau)=2R_{x}(\tau)-R_{x}(\tau+2a)-R_{x}(\tau-2a)$\\
+$S_{y}(\omega)=4S_{x}(\omega)\sin^{2}(a\omega)$
+	\end{frame}
+	\section{Solution}
+	\begin{frame}{Solution}
+	The process $y(t)=x(t+a)-x(t-a)$ is the output of a system with input $x(t)$ and system function\\
+	$H(\omega)=e^{ja\omega}+e^{-ja\omega}=2j\sin(a\omega)$\\
+	From corollary of convolution theorem,\\
+	\begin{align}
+	S_{yy}(\omega)=S_{xx}(\omega)H(\omega)H^{*}(\omega)\\
+	\implies S_{yy}(\omega)=S_{xx}(\omega)|H(\omega)|^{2}\\
+	\therefore S_{yy}(\omega)=S_{xx}(\omega)(2\sin^{2}(a\omega))\\
+	\implies S_{y}(\omega)=4S_{x}(\omega)\sin^{2}(a\omega)\\
+	\implies S_{y}(\omega)=(2-e^{2ja\omega}-e^{-2ja\omega})S_{x}(\omega)\\
+	\therefore R_{y}(\tau)=2R_{x}(\tau)-R_{x}(\tau+2a)-R_{x}(\tau-2a)
+	\end{align}
+	\end{frame}
+\end{document}
