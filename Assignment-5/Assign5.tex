@@ -1,0 +1,92 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+
+\setbeamertemplate{caption}[numbered]{}
+
+\usepackage{enumitem}
+\usepackage{tfrupee}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{txfonts}
+
+\def\inputGnumericTable{}
+
+\usepackage[latin1]{inputenc}                                 
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                        
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}
+\usepackage{caption} 
+\captionsetup[table]{skip=3pt}  
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\renewcommand{\thefigure}{\arabic{table}}
+\renewcommand{\thetable}{\arabic{table}}                                     
+                               
+\title{AI1110 \\ Assignment 5}
+\author{Pranav B \\ AI21BTECH11023}
+\date{18 May 2022}
+
+
+\begin{document}
+	% The title page
+	\begin{frame}
+		\titlepage
+	\end{frame}
+	
+	% The table of contents
+	\begin{frame}{Outline}
+    		\tableofcontents
+	\end{frame}
+	
+	% The question
+	\section{Question}
+	\begin{frame}{ Papoulis Chapter 2 example 2.17}
+	If we toss a coin twice, we generate the four outcomes $hh,ht,th$, and $tt$ 
+	\end{frame}
+	% The solution
+	\section{Solution}
+	\begin{frame}{Solution}
+	(a) To construct an experiment with these outcomes, it suffices to assign probabilities to its elementary events. With $a$and $b$ two positive numbers such that $a + b = 1$,
+we assume that\\
+\begin{table}[ht!]
+\begin{tabular}{c c c}
+$P(hh) = a^2$ & $P(ht) = P(th) = ab$ & $P(tt) = b^2$
+\end{tabular}
+\end{table}
+These probabilities are consistent with the axioms because
+\begin{align}
+a^2+ab+ab +b^2 = (a+b)^2 = 1
+\end{align}
+In the experiment so constructed, the events\\
+$H_1$ = {heads at first toss} = $(hh,ht)$\\
+$H_2$ = {heads at second toss} = $(hh,th)$\\
+The intersection $H_1$ $H_2$ of these two events consists of the single outcome $(hh)$
+Hence\\
+\begin{align}
+P(H_1 H_2) = P(hh) = a^2 = P(H_1 )P(H_2)
+\end{align}
+This shows that the events $H_1$ and $H_2$ are independent.
+\end{frame}
+\begin{frame}
+(b) The experiment in part (a) of this example can be specified in terms of the
+probabilities $P(H_1) = P(H_2) = a$ of the events $H_1$ and $H_2$ and the information that these events are independent.\\
+Indeed as we have shown the events $H_1'$ and $H_2$ and the events $H_1'$ and $H_2'$ are also independent. Furthermore,\\
+\begin{table}[ht!]
+\begin{tabular}{c c c c}
+$H_1 H_2=(hh)$ & $H_1 H_2=(ht)$ & $H_1 H_2=(th)$ & $H_1 H_2=(tt)$
+\end{tabular}
+\end{table}
+and $P(H_1') = 1 - P(H_1) = 1 - a$,$ P(H_2') = 1 - P(H_2) = 1 - a$. Hence
+\begin{table}
+\begin{tabular}{c c c c}
+$P(hh) = a^2$ & $P(ht) = a(l - a)$ & $P(th) = (l - a)a$ & $P(tt) = (1 - a)^2$
+\end{tabular}
+\end{table}
+	\end{frame}
+\end{document}
