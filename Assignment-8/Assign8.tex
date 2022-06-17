@@ -1,0 +1,66 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+
+\setbeamertemplate{caption}[numbered]{}
+
+\usepackage{enumitem}
+\usepackage{tfrupee}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{txfonts}
+
+\def\inputGnumericTable{}
+\newcommand*{\permcomb}[4][0mu]{{{}^{#3}\mkern#1#2_{#4}}}
+\newcommand*{\perm}[1][-3mu]{\permcomb[#1]{P}}
+\newcommand*{\comb}[1][-1mu]{\permcomb[#1]{C}}
+\usepackage[latin1]{inputenc}                                 
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                        
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}
+\usepackage{caption} 
+\captionsetup[table]{skip=3pt}  
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\renewcommand{\thefigure}{\arabic{table}}
+\renewcommand{\thetable}{\arabic{table}}                                     
+                               
+\title{AI1110 \\ Assignment 8}
+\author{Pranav B \\ AI21BTECH11023}
+\date{6 June 2022}
+
+
+\begin{document}
+	% The title page
+	\begin{frame}
+		\titlepage
+	\end{frame}
+	
+	% The table of contents
+	\begin{frame}{Outline}
+    		\tableofcontents
+	\end{frame}
+	
+	% The question
+	\section{Question}
+	\begin{frame}{ Papoulis Chapter 8 problem 8.21}
+	The random variable $x$ has the truncated exponential density $f(x)=ce^{-c(x-x_{0})}U(x-x_0)$. Find the ML estimate $\hat{c}$ of $c$ in terms of the n samples of $x_i$ of $x$.
+	\end{frame}
+	\section{Solution}
+	\begin{frame}{Solution}
+	The joint density,\\
+	$f(X,c)&=c^{n}e^{-cn(\bar{x}-x_{0})}$ and $x_{i}>x_{0}$
+	has an interior maximum if,
+	\begin{align}
+	\frac{\partial{f(X,c)}}{\partial{c}}=0\\
+	\implies nc^{n-1}e^{-cn(\bar{x}-x_{0})}+c^{n}e^{-cn(\bar{x}-x_{0})}(-n(\bar{x}-x_{0}))=0\\
+	\implies n+c(-n)(\bar{x}-x_{0})=0\\
+	\therefore \hat{c}=\frac{1}{\bar{x}-x_{0}}
+	\end{align}
+	\end{frame}
+\end{document}
