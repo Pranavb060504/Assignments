@@ -1,0 +1,85 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+
+\setbeamertemplate{caption}[numbered]{}
+
+\usepackage{enumitem}
+\usepackage{tfrupee}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{txfonts}
+
+\def\inputGnumericTable{}
+\newcommand*{\permcomb}[4][0mu]{{{}^{#3}\mkern#1#2_{#4}}}
+\newcommand*{\perm}[1][-3mu]{\permcomb[#1]{P}}
+\newcommand*{\comb}[1][-1mu]{\permcomb[#1]{C}}
+\usepackage[latin1]{inputenc}                                 
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                        
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}
+\usepackage{caption} 
+\captionsetup[table]{skip=3pt}  
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\renewcommand{\thefigure}{\arabic{table}}
+\renewcommand{\thetable}{\arabic{table}}                                     
+                               
+\title{AI1110 \\ Assignment 6}
+\author{Pranav B \\ AI21BTECH11023}
+\date{26 May 2022}
+
+
+\begin{document}
+	% The title page
+	\begin{frame}
+		\titlepage
+	\end{frame}
+	
+	% The table of contents
+	\begin{frame}{Outline}
+    		\tableofcontents
+	\end{frame}
+	
+	% The question
+	\section{Question}
+	\begin{frame}{ Papoulis Chapter 4 problem 4.34}
+	We place at random n particles in $m > n$ boxes. Find the probability $p$ that the particles will be found in $n$ preselected boxes (one in each box). Consider the following cases:\\
+(a) M-B (Maxwell-Boltzmann)-the particles are distinct; all alternatives are possible.\\
+(b) B-E (Bose-Einstein)-the particles cannot be distinguished; all alternatives are possible.\\
+(c) F-D (Fermi-Dirac )-the particles cannot be distinguished; at most one particle is allowed in a box.\\
+	\end{frame}
+	% The solution
+	\section{Solution}
+	\begin{frame}{Solution}
+	a) $because$ all particles are distinct each particle can be put into any of the $m$ boxes.\\
+	 $therefore$ total number of ways =$m^n$\\
+	 Now the number of ways in which the balls can be present in the preselected boxes is = $n!$\\
+	 $therefore p= \frac{n!}{m^n}$
+	 \end{frame}
+	 \begin{frame}
+	 b)Given all particles are identical. Assume $k_i$ number of balls to be present in the ith box.\\
+	 \begin{align}
+	 \sum_{i=1}^{m}k_{i}=n
+	 \end{align}
+	 Number of possible solutions for this is = $\comb{m+n-1}{m-1}$\\
+	 The number of favourable outcomes is =1\\
+	 \begin{align}
+	  \therefore p=\frac{1}{\comb{m+n-1}{m-1}}\\
+	  \implies p=\frac{n!(m-1)!}{(m+n-1)!}
+	 \end{align}
+	 \end{frame}
+	 \begin{frame}
+	c)Since the particles are not distinguishable, Total ways equals the number of ways of selecting n out of m =$\comb{m}{n}$\\
+	and favourable outcomes=1\\
+	\begin{align}
+	p=\frac{1}{\comb{m}{n}}\\
+	\implies p=\frac{n!(m-n)!}{m!}
+	\end{align}
+	\end{frame}
+\end{document}
